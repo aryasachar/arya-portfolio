@@ -6,9 +6,9 @@ import { MessageCircle, X, Loader2 } from "lucide-react";
 const PRESET_QUESTIONS = [
   "What's Arya's AI product experience?",
   "Tell me about the 19% search failure discovery.",
-  "What has Arya built hands-on, herself?",
-  "What's her data science background?",
-  "Why is she looking for a new role?",
+  "What has Arya built hands-on?",
+  "What's Arya's data science background?",
+  "Why is Arya looking for a new role?",
 ];
 
 type Exchange = { question: string; answer: string };
