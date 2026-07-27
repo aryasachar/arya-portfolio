@@ -15,13 +15,10 @@ export default function Home() {
           Product strategist and builder.
         </h1>
         <p className="mb-8 max-w-md text-base leading-relaxed text-text-muted">
-          6+ years at Yahoo turning data into product decisions — from
-          uncovering a{" "}
-          <span className="font-semibold text-text-primary">
-            19% search failure rate
-          </span>{" "}
-          to independently shipping an AI tool that helps PMs plan
-          experiments.
+          6+ years at Yahoo defining product vision and driving B2B and B2C
+          strategy — from AI initiatives through launch. Grounded in data
+          science, I recently designed and shipped an AI tool that helps PMs
+          plan structured experiments end to end.
         </p>
         <div className="flex flex-wrap items-center gap-4">
           <Link
