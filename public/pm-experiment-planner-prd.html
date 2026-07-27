@@ -1,0 +1,1188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PRD — PM Experiment Planner</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy: #0A0F1E;
+    --navy-2: #111827;
+    --navy-3: #1E293B;
+    --navy-4: #263040;
+    --indigo: #4F46E5;
+    --indigo-light: #6366F1;
+    --indigo-muted: rgba(99,102,241,0.12);
+    --indigo-border: rgba(99,102,241,0.3);
+    --white: #F8FAFC;
+    --text-primary: #F1F5F9;
+    --text-secondary: #94A3B8;
+    --text-muted: #64748B;
+    --border: rgba(255,255,255,0.07);
+    --border-accent: rgba(99,102,241,0.25);
+    --success: #10B981;
+    --success-muted: rgba(16,185,129,0.1);
+    --amber: #F59E0B;
+    --amber-muted: rgba(245,158,11,0.1);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--navy);
+    color: var(--text-primary);
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 15px;
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Layout */
+  .page { max-width: 860px; margin: 0 auto; padding: 0 32px 120px; }
+
+  /* Header */
+  .header {
+    padding: 64px 0 56px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 64px;
+  }
+
+  .header-meta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 28px;
+  }
+
+  .badge {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 4px;
+    border: 1px solid var(--indigo-border);
+    background: var(--indigo-muted);
+    color: var(--indigo-light);
+  }
+
+  .badge-outline {
+    background: transparent;
+    border-color: var(--border);
+    color: var(--text-muted);
+  }
+
+  .header h1 {
+    font-size: clamp(2rem, 5vw, 2.75rem);
+    font-weight: 600;
+    letter-spacing: -0.03em;
+    color: var(--white);
+    line-height: 1.15;
+    margin-bottom: 16px;
+  }
+
+  .header h1 span {
+    color: var(--indigo-light);
+  }
+
+  .header-sub {
+    font-size: 16px;
+    color: var(--text-secondary);
+    max-width: 600px;
+    line-height: 1.65;
+    margin-bottom: 36px;
+  }
+
+  .header-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  .stat {
+    background: var(--navy-2);
+    padding: 20px 24px;
+  }
+
+  .stat-label {
+    font-size: 11px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+    margin-bottom: 6px;
+    font-family: 'IBM Plex Mono', monospace;
+  }
+
+  .stat-value {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--white);
+  }
+
+  .stat-value.indigo { color: var(--indigo-light); }
+  .stat-value.green { color: var(--success); }
+
+  /* TOC */
+  .toc {
+    background: var(--navy-3);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--indigo);
+    border-radius: 8px;
+    padding: 24px 28px;
+    margin-bottom: 64px;
+  }
+
+  .toc-title {
+    font-size: 11px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-muted);
+    font-family: 'IBM Plex Mono', monospace;
+    margin-bottom: 14px;
+  }
+
+  .toc ol {
+    list-style: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px 32px;
+  }
+
+  .toc li a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.15s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .toc li a:hover { color: var(--indigo-light); }
+
+  .toc li a::before {
+    content: attr(data-num);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    color: var(--indigo-light);
+    opacity: 0.7;
+    min-width: 20px;
+  }
+
+  /* Sections */
+  .section { margin-bottom: 72px; }
+
+  .section-eyebrow {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--indigo-light);
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .section-eyebrow::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--indigo-border);
+    max-width: 40px;
+  }
+
+  .section h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    color: var(--white);
+    margin-bottom: 20px;
+  }
+
+  .section h3 {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 28px 0 10px;
+  }
+
+  p { color: var(--text-secondary); margin-bottom: 14px; }
+  p:last-child { margin-bottom: 0; }
+
+  strong { color: var(--text-primary); font-weight: 500; }
+
+  /* Cards */
+  .card {
+    background: var(--navy-3);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 24px 28px;
+    margin-bottom: 16px;
+  }
+
+  .card-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 8px;
+  }
+
+  .card p { font-size: 14px; margin-bottom: 0; }
+
+  /* Problem cards */
+  .problem-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 20px;
+  }
+
+  .problem-card {
+    background: var(--navy-3);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px 22px;
+  }
+
+  .problem-number {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--indigo-light);
+    margin-bottom: 8px;
+  }
+
+  .problem-card h4 {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 8px;
+  }
+
+  .problem-card p { font-size: 13px; }
+
+  /* Feature table */
+  .feature-table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+
+  .feature-table th {
+    font-size: 11px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+    font-family: 'IBM Plex Mono', monospace;
+    text-align: left;
+    padding: 10px 16px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .feature-table td {
+    padding: 14px 16px;
+    font-size: 14px;
+    color: var(--text-secondary);
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+
+  .feature-table td:first-child {
+    font-weight: 500;
+    color: var(--text-primary);
+    width: 30%;
+  }
+
+  .feature-table tr:last-child td { border-bottom: none; }
+  .feature-table tr:hover td { background: var(--navy-4); }
+
+  /* Field tiers */
+  .tier-block {
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    margin-top: 20px;
+  }
+
+  .tier-header {
+    padding: 12px 20px;
+    font-size: 12px;
+    font-weight: 600;
+    font-family: 'IBM Plex Mono', monospace;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .tier-header.required {
+    background: rgba(239,68,68,0.08);
+    color: #F87171;
+    border-bottom: 1px solid rgba(239,68,68,0.15);
+  }
+
+  .tier-header.soft {
+    background: var(--amber-muted);
+    color: var(--amber);
+    border-bottom: 1px solid rgba(245,158,11,0.15);
+  }
+
+  .tier-header.optional {
+    background: var(--success-muted);
+    color: var(--success);
+    border-bottom: 1px solid rgba(16,185,129,0.15);
+  }
+
+  .tier-fields { padding: 16px 20px; background: var(--navy-3); }
+
+  .tier-field {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 14px;
+  }
+
+  .tier-field:last-child { border-bottom: none; }
+
+  .field-name { font-weight: 500; color: var(--text-primary); min-width: 200px; }
+  .field-type {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--indigo-light);
+    background: var(--indigo-muted);
+    padding: 2px 7px;
+    border-radius: 3px;
+    margin-top: 2px;
+  }
+
+  /* Tech stack */
+  .tech-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 14px;
+    margin-top: 20px;
+  }
+
+  .tech-card {
+    background: var(--navy-3);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 18px 20px;
+  }
+
+  .tech-role {
+    font-size: 11px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+    font-family: 'IBM Plex Mono', monospace;
+    margin-bottom: 6px;
+  }
+
+  .tech-name {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 4px;
+  }
+
+  .tech-desc { font-size: 13px; color: var(--text-muted); }
+
+  /* Prompt block */
+  .prompt-block {
+    background: #0D1117;
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--indigo);
+    border-radius: 8px;
+    padding: 24px 28px;
+    margin-top: 20px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    line-height: 1.7;
+    color: #94A3B8;
+    white-space: pre-wrap;
+  }
+
+  .prompt-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--indigo-light);
+    margin-bottom: 12px;
+    font-family: 'IBM Plex Mono', monospace;
+  }
+
+  /* Timeline */
+  .timeline { margin-top: 24px; }
+
+  .timeline-item {
+    display: flex;
+    gap: 20px;
+    padding-bottom: 28px;
+    position: relative;
+  }
+
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: 19px;
+    top: 36px;
+    bottom: 0;
+    width: 1px;
+    background: var(--border);
+  }
+
+  .timeline-item:last-child::before { display: none; }
+
+  .timeline-dot {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--navy-3);
+    border: 1px solid var(--indigo-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    color: var(--indigo-light);
+    font-weight: 500;
+  }
+
+  .timeline-content { padding-top: 8px; }
+
+  .timeline-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 4px;
+  }
+
+  .timeline-meta {
+    font-size: 12px;
+    color: var(--indigo-light);
+    font-family: 'IBM Plex Mono', monospace;
+    margin-bottom: 8px;
+  }
+
+  .timeline-content p { font-size: 14px; }
+
+  /* Decision log */
+  .decision {
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 14px;
+  }
+
+  .decision-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 20px;
+    background: var(--navy-3);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .decision-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--white);
+  }
+
+  .decision-tag {
+    font-size: 11px;
+    font-family: 'IBM Plex Mono', monospace;
+    padding: 3px 8px;
+    border-radius: 4px;
+  }
+
+  .tag-changed { background: var(--indigo-muted); color: var(--indigo-light); }
+  .tag-kept { background: var(--success-muted); color: var(--success); }
+  .tag-deferred { background: var(--amber-muted); color: var(--amber); }
+
+  .decision-body { padding: 16px 20px; background: var(--navy-2); }
+  .decision-body p { font-size: 14px; margin-bottom: 8px; }
+  .decision-body p:last-child { margin-bottom: 0; }
+  .decision-label { font-weight: 500; color: var(--text-primary); }
+
+  /* Outcomes */
+  .outcome-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 14px;
+    margin-top: 20px;
+  }
+
+  .outcome-card {
+    background: var(--navy-3);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+  }
+
+  .outcome-number {
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--indigo-light);
+    letter-spacing: -0.03em;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .outcome-label {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+
+  /* Learnings */
+  .learning {
+    display: flex;
+    gap: 16px;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .learning:last-child { border-bottom: none; }
+
+  .learning-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    background: var(--indigo-muted);
+    border: 1px solid var(--indigo-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 14px;
+  }
+
+  .learning-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 4px;
+  }
+
+  .learning p { font-size: 14px; }
+
+  /* Footer */
+  .footer {
+    border-top: 1px solid var(--border);
+    padding-top: 40px;
+    margin-top: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-name {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--white);
+  }
+
+  .footer-sub {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-top: 2px;
+  }
+
+  .footer-badge {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--text-muted);
+    text-align: right;
+  }
+
+  /* Divider */
+  .divider {
+    height: 1px;
+    background: var(--border);
+    margin: 40px 0;
+  }
+
+  /* Inline code */
+  code {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    background: var(--navy-3);
+    border: 1px solid var(--border);
+    padding: 1px 6px;
+    border-radius: 4px;
+    color: var(--indigo-light);
+  }
+
+  /* Callout */
+  .callout {
+    background: var(--indigo-muted);
+    border: 1px solid var(--indigo-border);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin: 20px 0;
+    font-size: 14px;
+    color: var(--text-secondary);
+  }
+
+  .callout strong { color: var(--indigo-light); }
+
+  @media (max-width: 640px) {
+    .page { padding: 0 20px 80px; }
+    .toc ol { grid-template-columns: 1fr; }
+    .problem-grid { grid-template-columns: 1fr; }
+    .outcome-grid { grid-template-columns: 1fr; }
+    .footer { flex-direction: column; gap: 16px; align-items: flex-start; }
+    .tier-field { flex-direction: column; gap: 6px; }
+    .field-name { min-width: unset; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Header -->
+  <header class="header">
+    <div class="header-meta">
+      <span class="badge">PRD</span>
+      <span class="badge badge-outline">v1.0</span>
+      <span class="badge badge-outline">July 2026</span>
+    </div>
+    <h1>PM Experiment <span>Planner</span></h1>
+    <p class="header-sub">A product requirements document covering the end-to-end design, build, and iteration of an AI-powered experiment planning tool for Product Managers — from problem identification to shipped product.</p>
+    <div class="header-stats">
+      <div class="stat">
+        <div class="stat-label">Build time</div>
+        <div class="stat-value indigo">~1 week</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">Stack</div>
+        <div class="stat-value">Lovable + Claude API</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">Status</div>
+        <div class="stat-value green">Shipped</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">Type</div>
+        <div class="stat-value">Solo PM + Builder</div>
+      </div>
+    </div>
+  </header>
+
+  <!-- TOC -->
+  <nav class="toc">
+    <div class="toc-title">Contents</div>
+    <ol>
+      <li><a href="#problem" data-num="01">Problem Statement</a></li>
+      <li><a href="#solution" data-num="02">Solution Overview</a></li>
+      <li><a href="#users" data-num="03">Target Users</a></li>
+      <li><a href="#features" data-num="04">Features & Scope</a></li>
+      <li><a href="#inputs" data-num="05">Input Design</a></li>
+      <li><a href="#ai" data-num="06">AI & Prompt Architecture</a></li>
+      <li><a href="#tech" data-num="07">Technical Architecture</a></li>
+      <li><a href="#timeline" data-num="08">Build Timeline</a></li>
+      <li><a href="#decisions" data-num="09">Key Product Decisions</a></li>
+      <li><a href="#outcomes" data-num="10">Outcomes & Learnings</a></li>
+    </ol>
+  </nav>
+
+  <!-- 1. Problem -->
+  <section class="section" id="problem">
+    <div class="section-eyebrow">01</div>
+    <h2>Problem Statement</h2>
+    <p>Product Managers who run A/B experiments spend a disproportionate amount of time on the planning phase — not because the work is intellectually difficult, but because it is structurally inconsistent. There is no standard format, no shared checklist, and no guardrail against common mistakes like underpowered experiments, missing guardrail metrics, or poorly defined success criteria.</p>
+    <p>This problem was identified firsthand. At Yahoo, experiment planning was done manually and inconsistently across teams. Different PMs used different templates, different metric definitions, and different standards for what constituted a well-designed experiment. The result was avoidable mistakes — experiments that ran too short, experiments that shipped without guardrails, and reviews that couldn't be compared across teams.</p>
+
+    <div class="problem-grid">
+      <div class="problem-card">
+        <div class="problem-number">Pain 01</div>
+        <h4>No consistent structure</h4>
+        <p>Each PM designed experiments in their own format. There was no shared standard for what a complete experiment plan included.</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-number">Pain 02</div>
+        <h4>Common mistakes repeated</h4>
+        <p>Underpowered experiments, missing guardrail metrics, and vague success criteria appeared repeatedly across teams.</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-number">Pain 03</div>
+        <h4>High time cost</h4>
+        <p>A well-structured experiment plan could take 2–3 hours to write from scratch, pulling PMs away from higher-leverage work.</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-number">Pain 04</div>
+        <h4>Expert knowledge not scalable</h4>
+        <p>Senior PMs had internalized best practices around sample size, randomization, and metric selection. Junior PMs didn't — and there was no lightweight way to transfer that knowledge.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. Solution -->
+  <section class="section" id="solution">
+    <div class="section-eyebrow">02</div>
+    <h2>Solution Overview</h2>
+    <p>The PM Experiment Planner is a focused web application that takes a PM's hypothesis and experiment context as input and generates a complete, structured experiment design plan using the Claude AI API. The output includes a recommended primary metric, guardrail metrics, sample size guidance, experiment design, risk analysis, and a definition of success — in under 60 seconds.</p>
+
+    <div class="callout">
+      <strong>Core insight:</strong> The tool does not interpret experiment results — it designs the experiment before it runs. This distinction is intentional. Interpreting results requires knowing how your company defines and computes each metric. Designing an experiment requires expertise that <em>can</em> be generalised — and that's where AI adds reliable value without hallucination risk.
+    </div>
+
+    <h3>What the tool is not</h3>
+    <p>An early version of this concept was scoped as an <strong>experiment review generator</strong> — a tool that would take results as input and produce a stakeholder writeup. That scope was intentionally narrowed during the design phase after identifying a fundamental problem: Claude cannot reliably interpret metric results without knowing how those metrics are defined and computed at your specific company. The planner avoids this entirely by operating upstream of the data.</p>
+  </section>
+
+  <!-- 3. Users -->
+  <section class="section" id="users">
+    <div class="section-eyebrow">03</div>
+    <h2>Target Users</h2>
+    <p>The primary user is a <strong>Product Manager at a technology company</strong> who runs or oversees A/B experiments. They understand what they want to test but need help structuring the plan rigorously — identifying the right metrics, estimating sample size, and anticipating risks before launch.</p>
+
+    <div class="card">
+      <div class="card-title">Primary persona — Mid-level PM</div>
+      <p>2–5 years of PM experience. Runs 4–8 experiments per quarter. Comfortable with the concept of A/B testing but does not have a statistics background. Spends more time than they should writing experiment plans from scratch, often using an inconsistent personal template.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Secondary persona — Junior PM</div>
+      <p>Under 2 years of experience. Has not yet built intuition for what makes a well-designed experiment. Most likely to make avoidable mistakes — running experiments that are underpowered, missing guardrail metrics, or shipping without a clear definition of success. This tool acts as a structured guide.</p>
+    </div>
+
+    <h3>Who this tool is not for</h3>
+    <p>Data scientists or analysts who need statistical rigour beyond directional sample size guidance. Teams with existing experimentation platforms that include built-in planning tooling. The tool is deliberately a starting point, not a replacement for a full experimentation infrastructure.</p>
+  </section>
+
+  <!-- 4. Features -->
+  <section class="section" id="features">
+    <div class="section-eyebrow">04</div>
+    <h2>Features & Scope</h2>
+
+    <table class="feature-table">
+      <thead>
+        <tr>
+          <th>Feature</th>
+          <th>Description</th>
+          <th>Scope</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Experiment input form</td>
+          <td>Structured form with 8 fields split across hard required, soft required, and optional tiers</td>
+          <td><span class="badge">V1</span></td>
+        </tr>
+        <tr>
+          <td>Example templates</td>
+          <td>3 pre-filled experiment templates (Engagement, Conversion, Retention) that load with one click</td>
+          <td><span class="badge">V1</span></td>
+        </tr>
+        <tr>
+          <td>AI plan generation</td>
+          <td>Claude API call that generates a structured 8-section experiment plan from user inputs</td>
+          <td><span class="badge">V1</span></td>
+        </tr>
+        <tr>
+          <td>Copy to clipboard</td>
+          <td>One-click copy of the full generated plan for use in Confluence, Notion, or email</td>
+          <td><span class="badge">V1</span></td>
+        </tr>
+        <tr>
+          <td>Field validation</td>
+          <td>Hard blocks for required fields, soft warnings with user confirmation for incomplete optional fields</td>
+          <td><span class="badge">V1</span></td>
+        </tr>
+        <tr>
+          <td>Dark / light mode</td>
+          <td>Full dark mode support with navy + indigo theme; light mode available</td>
+          <td><span class="badge">V1</span></td>
+        </tr>
+        <tr>
+          <td>Experiment review generator</td>
+          <td>Takes results as input and generates a stakeholder writeup — deprioritised due to hallucination risk on proprietary metrics</td>
+          <td><span class="badge badge-outline">V2</span></td>
+        </tr>
+        <tr>
+          <td>User accounts / history</td>
+          <td>Saving past plans, team sharing, plan versioning</td>
+          <td><span class="badge badge-outline">V2</span></td>
+        </tr>
+        <tr>
+          <td>Sample size calculator</td>
+          <td>Interactive calculator with baseline rate, MDE, and confidence level inputs</td>
+          <td><span class="badge badge-outline">V2</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- 5. Inputs -->
+  <section class="section" id="inputs">
+    <div class="section-eyebrow">05</div>
+    <h2>Input Design</h2>
+    <p>Input fields are grouped into three tiers based on how much they affect output quality. The tiering is explicitly surfaced in the UI so users understand the consequences of leaving fields blank.</p>
+
+    <div class="tier-block">
+      <div class="tier-header required">Hard required — blocks generation if empty</div>
+      <div class="tier-fields">
+        <div class="tier-field">
+          <div class="field-name">Experiment Name</div>
+          <div class="field-type">text input</div>
+        </div>
+        <div class="tier-field">
+          <div class="field-name">Hypothesis</div>
+          <div class="field-type">textarea</div>
+        </div>
+        <div class="tier-field">
+          <div class="field-name">What are you changing?</div>
+          <div class="field-type">textarea</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tier-block">
+      <div class="tier-header soft">Soft required — warns but allows generation</div>
+      <div class="tier-fields">
+        <div class="tier-field">
+          <div class="field-name">What are you trying to improve?</div>
+          <div class="field-type">text input</div>
+        </div>
+        <div class="tier-field">
+          <div class="field-name">Target Audience</div>
+          <div class="field-type">text input</div>
+        </div>
+        <div class="tier-field">
+          <div class="field-name">Expected Duration</div>
+          <div class="field-type">dropdown</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tier-block">
+      <div class="tier-header optional">Optional — labelled clearly in UI</div>
+      <div class="tier-fields">
+        <div class="tier-field">
+          <div class="field-name">Platform / Surface</div>
+          <div class="field-type">dropdown</div>
+        </div>
+        <div class="tier-field">
+          <div class="field-name">Constraints & context</div>
+          <div class="field-type">textarea</div>
+        </div>
+      </div>
+    </div>
+
+    <h3>Validation logic</h3>
+    <p>If any hard required field is empty on submit, generation is blocked, the field is highlighted with a red border, and an inline error message appears. No browser alerts or popups are used — all errors are inline. If soft required fields are empty, a warning banner appears above the generate button: the user must actively confirm before proceeding, preventing silent output degradation.</p>
+  </section>
+
+  <!-- 6. AI -->
+  <section class="section" id="ai">
+    <div class="section-eyebrow">06</div>
+    <h2>AI & Prompt Architecture</h2>
+    <p>Claude (<code>claude-sonnet-4-20250514</code>) handles one task: generating the experiment plan from user inputs. The API key is stored as an environment variable and never exposed in frontend code. Lovable routes the API call server-side to avoid CORS restrictions and enable streaming.</p>
+
+    <h3>Output structure</h3>
+    <p>Claude is instructed to generate exactly 8 sections with strict length constraints per section. This prevents verbose, generic output and keeps the plan tight and actionable.</p>
+
+    <table class="feature-table" style="margin-top:16px;">
+      <thead>
+        <tr><th>Section</th><th>Length constraint</th><th>Notes</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>TL;DR</td><td>3 bullets max</td><td>What's tested, key metric, biggest risk</td></tr>
+        <tr><td>Experiment Overview</td><td>2 sentences</td><td>What and why</td></tr>
+        <tr><td>Hypothesis</td><td>1 sentence</td><td>Structured "We believe that…" format</td></tr>
+        <tr><td>Primary Metric</td><td>3 sentences</td><td>Name, rationale, measurement method</td></tr>
+        <tr><td>Guardrail Metrics</td><td>2 sentences each, 2–3 metrics</td><td>Experiment-specific, not generic</td></tr>
+        <tr><td>Sample Size & Runtime</td><td>3–4 sentences</td><td>Directional guidance + what info is needed</td></tr>
+        <tr><td>Experiment Design</td><td>2–3 sentences + 1 key consideration</td><td>Control vs variant, key design risk</td></tr>
+        <tr><td>Risks & Watch-outs</td><td>3 risks, 2 sentences each</td><td>Specific to this experiment only</td></tr>
+        <tr><td>What Good Looks Like</td><td>3 sentences total</td><td>Positive / negative / inconclusive result</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Key prompt guardrails</h3>
+    <p>Two explicit constraints are built into the prompt to prevent the most common AI failure modes in this domain:</p>
+    <p><strong>No Ship/Kill recommendation.</strong> Claude is explicitly instructed not to make a go/no-go recommendation. That judgment depends on company context, team strategy, and business priorities that Claude cannot access.</p>
+    <p><strong>No hallucinated metric interpretations.</strong> Claude recommends what metrics to watch and why — it does not interpret metric results or make claims about what specific numbers mean for a specific company's product.</p>
+
+    <div class="prompt-label" style="margin-top:24px;">Prompt structure (abbreviated)</div>
+    <div class="prompt-block">You are a senior product manager and experimentation expert.
+Generate an experiment plan with exactly these sections:
+
+0. TL;DR (3 bullets max)
+1. Experiment Overview (2 sentences)
+2. Hypothesis (1 sentence, structured form)
+3. Recommended Primary Metric (3 sentences max)
+4. Recommended Guardrail Metrics (2–3 metrics, 2 sentences each)
+5. Sample Size & Runtime (3–4 sentences)
+6. Experiment Design (2–3 sentences + 1 key consideration)
+7. Risks & Watch-outs (3 risks, 2 sentences each)
+8. What Good Looks Like (3 sentences total)
+
+Rules:
+- Do not make a Ship/Kill recommendation
+- Be specific to this experiment — no generic advice
+- Flag missing fields with an assumption, not an error
+- Never hallucinate metric definitions or results</div>
+  </section>
+
+  <!-- 7. Tech -->
+  <section class="section" id="tech">
+    <div class="section-eyebrow">07</div>
+    <h2>Technical Architecture</h2>
+    <p>The app is intentionally built with a minimal technical footprint. No backend, no database, no user authentication. All session data lives in the browser and resets on page refresh. This keeps the build fast, the cost near-zero, and the codebase maintainable by a single non-engineer PM.</p>
+
+    <div class="tech-grid">
+      <div class="tech-card">
+        <div class="tech-role">Builder</div>
+        <div class="tech-name">Lovable</div>
+        <div class="tech-desc">AI app builder. Generates and hosts the frontend. Handles environment variables and server-side API routing.</div>
+      </div>
+      <div class="tech-card">
+        <div class="tech-role">AI Model</div>
+        <div class="tech-name">Claude Sonnet</div>
+        <div class="tech-desc">claude-sonnet-4-20250514 via Anthropic API. Handles plan generation. ~15–30s response time.</div>
+      </div>
+      <div class="tech-card">
+        <div class="tech-role">Frontend</div>
+        <div class="tech-name">React</div>
+        <div class="tech-desc">Generated by Lovable. Component-based UI with inline state management. No external state library.</div>
+      </div>
+      <div class="tech-card">
+        <div class="tech-role">Styling</div>
+        <div class="tech-name">Tailwind CSS</div>
+        <div class="tech-desc">Utility-first CSS. Dark navy + indigo theme. Fully responsive from mobile to desktop.</div>
+      </div>
+      <div class="tech-card">
+        <div class="tech-role">Storage</div>
+        <div class="tech-name">None (session only)</div>
+        <div class="tech-desc">No database or backend. All form state is session-only and resets on page refresh by design.</div>
+      </div>
+      <div class="tech-card">
+        <div class="tech-role">Deployment</div>
+        <div class="tech-name">Lovable hosting</div>
+        <div class="tech-desc">One-click deploy via Lovable. Live public URL. API key secured as environment variable.</div>
+      </div>
+    </div>
+
+    <h3>API cost model</h3>
+    <p>Each experiment plan generation costs approximately <strong>$0.01–0.02</strong> at Claude Sonnet pricing. A $5 API credit is sufficient for 250–500 generations — more than enough for development, testing, and early public use. A monthly workspace spend limit is set to cap total exposure.</p>
+  </section>
+
+  <!-- 8. Timeline -->
+  <section class="section" id="timeline">
+    <div class="section-eyebrow">08</div>
+    <h2>Build Timeline</h2>
+    <p>The full product — from problem framing to shipped and iterated app — was completed in approximately one week as a solo project, with no engineering support.</p>
+
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-dot">D1</div>
+        <div class="timeline-content">
+          <div class="timeline-title">Problem framing & scope decision</div>
+          <div class="timeline-meta">Day 1</div>
+          <p>Identified the problem from firsthand experience at Yahoo. Scoped the initial concept as an experiment review generator, then pivoted to an experiment planner after identifying the hallucination risk in result interpretation. Defined the V1 feature set.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot">D2</div>
+        <div class="timeline-content">
+          <div class="timeline-title">Input design & prompt engineering</div>
+          <div class="timeline-meta">Day 2</div>
+          <p>Defined the 8 input fields, the three-tier validation model, and the full Claude prompt. Iterated on prompt length constraints and output sections. Ran a simulation of the prompt to validate output quality before building.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot">D3</div>
+        <div class="timeline-content">
+          <div class="timeline-title">Core app build in Lovable</div>
+          <div class="timeline-meta">Day 3</div>
+          <p>Pasted the comprehensive Lovable starter prompt. Reviewed the generated UI against the spec — form fields, template cards, validation logic, and output panel. Wired in the Claude API key via environment variables.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot">D4</div>
+        <div class="timeline-content">
+          <div class="timeline-title">Visual design iteration</div>
+          <div class="timeline-meta">Day 4</div>
+          <p>Applied dark navy + indigo theme. Added AI-Powered badge, template card hover states, form card accent border, and subtle radial gradient in the header. Each change was a separate Lovable prompt to avoid regressions.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot">D5</div>
+        <div class="timeline-content">
+          <div class="timeline-title">Bug fixes & UX polish</div>
+          <div class="timeline-meta">Days 5–6</div>
+          <p>Fixed three key issues: dark mode text visibility in output panel, excessive left/right whitespace on desktop, and raw JSON rendering during generation. Replaced the loading bar with streaming text. Added latency expectation message.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot">D7</div>
+        <div class="timeline-content">
+          <div class="timeline-title">Deploy & documentation</div>
+          <div class="timeline-meta">Day 7</div>
+          <p>Deployed via Lovable one-click publish. Wrote portfolio case study and PRD. Set API spend limit to cap monthly cost exposure.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. Decisions -->
+  <section class="section" id="decisions">
+    <div class="section-eyebrow">09</div>
+    <h2>Key Product Decisions</h2>
+
+    <div class="decision">
+      <div class="decision-header">
+        <div class="decision-title">Pivoted from review generator to experiment planner</div>
+        <div class="decision-tag tag-changed">Scope changed</div>
+      </div>
+      <div class="decision-body">
+        <p><span class="decision-label">Decision:</span> The original concept was an experiment review generator — a tool that takes results and generates a stakeholder writeup. This was narrowed to an experiment planner during design.</p>
+        <p><span class="decision-label">Rationale:</span> Reviewing results requires interpreting proprietary metrics that Claude cannot reliably understand without company-specific context. Planning an experiment requires expertise that is generalisable. The pivot eliminates the hallucination risk entirely while delivering more upstream value.</p>
+      </div>
+    </div>
+
+    <div class="decision">
+      <div class="decision-header">
+        <div class="decision-title">No Ship/Kill recommendation from Claude</div>
+        <div class="decision-tag tag-kept">Kept</div>
+      </div>
+      <div class="decision-body">
+        <p><span class="decision-label">Decision:</span> Claude is explicitly instructed never to recommend shipping or killing an experiment.</p>
+        <p><span class="decision-label">Rationale:</span> This judgment depends on business context, team strategy, and company priorities that Claude cannot access. Including a recommendation would create false confidence. The tool defines what good looks like — the PM makes the call.</p>
+      </div>
+    </div>
+
+    <div class="decision">
+      <div class="decision-header">
+        <div class="decision-title">No backend, no database, session-only storage</div>
+        <div class="decision-tag tag-kept">Kept</div>
+      </div>
+      <div class="decision-body">
+        <p><span class="decision-label">Decision:</span> All data lives in the browser and resets on page refresh. No user accounts, no plan history, no saved state.</p>
+        <p><span class="decision-label">Rationale:</span> Keeps the V1 build fast and the codebase simple. User accounts and plan history are clear V2 features once there is evidence of repeat usage.</p>
+      </div>
+    </div>
+
+    <div class="decision">
+      <div class="decision-header">
+        <div class="decision-title">Three-tier field validation model</div>
+        <div class="decision-tag tag-kept">Kept</div>
+      </div>
+      <div class="decision-body">
+        <p><span class="decision-label">Decision:</span> Form fields split into hard required (blocks generation), soft required (warns but allows generation with confirmation), and optional (labelled but never enforced).</p>
+        <p><span class="decision-label">Rationale:</span> A single required/optional binary would either block too aggressively or allow severely degraded output silently. The three-tier model gives users agency while preventing the worst outcomes — a plan generated with no audience, no duration, and no goal is nearly useless.</p>
+      </div>
+    </div>
+
+    <div class="decision">
+      <div class="decision-header">
+        <div class="decision-title">Guardrail metrics suggested by Claude, not input by user</div>
+        <div class="decision-tag tag-kept">Kept</div>
+      </div>
+      <div class="decision-body">
+        <p><span class="decision-label">Decision:</span> Claude recommends guardrail metrics based on experiment context. The user does not need to know their guardrail metrics upfront.</p>
+        <p><span class="decision-label">Rationale:</span> At the planning stage, many PMs — especially junior ones — do not know what their guardrail metrics should be. That is precisely what the tool is for. Requiring the user to input guardrails defeats the purpose. Claude surfaces them; the PM validates them against their specific context.</p>
+      </div>
+    </div>
+
+    <div class="decision">
+      <div class="decision-header">
+        <div class="decision-title">Sample size calculator deferred to V2</div>
+        <div class="decision-tag tag-deferred">Deferred</div>
+      </div>
+      <div class="decision-body">
+        <p><span class="decision-label">Decision:</span> V1 provides directional sample size guidance in prose. An interactive calculator with baseline rate, MDE, and confidence level inputs is scoped to V2.</p>
+        <p><span class="decision-label">Rationale:</span> The directional guidance is sufficient to flag underpowered experiments and identify what information the team needs. A full calculator requires baseline data the user may not have at planning time. Ship the simpler version first and validate whether users actually need the calculator before building it.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10. Outcomes -->
+  <section class="section" id="outcomes">
+    <div class="section-eyebrow">10</div>
+    <h2>Outcomes & Learnings</h2>
+
+    <div class="outcome-grid">
+      <div class="outcome-card">
+        <div class="outcome-number">&lt;5min</div>
+        <div class="outcome-label">Time to generate a complete experiment plan</div>
+      </div>
+      <div class="outcome-card">
+        <div class="outcome-number">~$0.02</div>
+        <div class="outcome-label">Cost per generation at Claude Sonnet pricing</div>
+      </div>
+      <div class="outcome-card">
+        <div class="outcome-number">1 week</div>
+        <div class="outcome-label">End-to-end build time, solo, no engineering support</div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="learning">
+      <div class="learning-icon">→</div>
+      <div>
+        <div class="learning-title">Prompt engineering is product design</div>
+        <p>The single highest-leverage decision in this project was the prompt structure — specifically the length constraints per section and the two explicit guardrails (no Ship/Kill recommendation, no metric interpretation). These constraints produced dramatically better output than an unconstrained prompt. Writing a good prompt requires the same thinking as writing a good product spec: clear inputs, clear outputs, explicit constraints, and anticipated edge cases.</p>
+      </div>
+    </div>
+
+    <div class="learning">
+      <div class="learning-icon">→</div>
+      <div>
+        <div class="learning-title">Scope the AI to what it can reliably do</div>
+        <p>The pivot from review generator to experiment planner was the most important product decision in this project. It was made by asking "where does the AI have reliable generalizable knowledge?" — and then scoping the product to that zone. AI tools fail when they are asked to interpret context-specific information they cannot access. They succeed when they are asked to apply general expertise to a specific situation.</p>
+      </div>
+    </div>
+
+    <div class="learning">
+      <div class="learning-icon">→</div>
+      <div>
+        <div class="learning-title">Streaming UX matters as much as response quality</div>
+        <p>A 20-second wait for a blank screen followed by a full response dump feels slow and broken. The same 20-second response with text streaming in from second one feels fast and responsive. The total time is identical. Streaming implementation was one of the most impactful UX improvements in the build — and it had nothing to do with the AI output quality.</p>
+      </div>
+    </div>
+
+    <div class="learning">
+      <div class="learning-icon">→</div>
+      <div>
+        <div class="learning-title">Iterating in Lovable requires discipline</div>
+        <p>Lovable's AI builder is powerful but prone to regressions — asking for multiple changes in one prompt often breaks things that were already working. The most effective workflow was one change per prompt, using Lovable's built-in version history to snapshot before each iteration. This discipline made the build faster overall even though it felt slower in individual prompts.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div>
+      <div class="footer-name">PM Experiment Planner</div>
+      <div class="footer-sub">Product Requirements Document · v1.0 · July 2026</div>
+    </div>
+    <div class="footer-badge">
+      Built with Lovable + Claude API<br>
+      Solo PM project
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>
