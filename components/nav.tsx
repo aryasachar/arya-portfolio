@@ -34,10 +34,10 @@ export function Nav() {
               <Link
                 key={link.href}
                 href={link.href}
-                className={`text-sm transition-colors ${
+                className={`text-sm underline decoration-1 underline-offset-4 transition-colors ${
                   isActive
-                    ? "font-semibold text-accent"
-                    : "text-text-muted hover:text-text-primary"
+                    ? "font-semibold text-accent decoration-accent"
+                    : "text-text-muted decoration-border hover:text-text-primary hover:decoration-text-muted"
                 }`}
               >
                 {link.label}

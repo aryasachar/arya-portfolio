@@ -7,7 +7,7 @@ export function Footer() {
         <p>© {year} Arya Sachar</p>
         <div className="flex gap-5">
           <a
-            href="https://linkedin.com/in/aryasachar"
+            href="https://www.linkedin.com/in/arya-sachar-259ba4164/"
             target="_blank"
             rel="noreferrer"
             className="transition-colors hover:text-text-primary"
