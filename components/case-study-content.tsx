@@ -90,7 +90,7 @@ export function CaseStudyContent({
             <div className="overflow-hidden rounded-xl border border-border">
               <iframe
                 src={demo.url}
-                className="h-[600px] w-full"
+                className="h-[500px] w-full sm:h-[650px] lg:h-[820px]"
                 title={demo.label}
                 loading="lazy"
               />

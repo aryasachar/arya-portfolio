@@ -15,7 +15,7 @@ export function Nav() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-background/80 backdrop-blur-sm">
-      <div className="mx-auto flex h-16 max-w-3xl items-center justify-between px-6">
+      <div className="mx-auto flex h-16 max-w-4xl items-center justify-between px-6">
         <Link
           href="/"
           className="text-[15px] font-bold tracking-tight text-text-primary"
