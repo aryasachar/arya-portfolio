@@ -99,7 +99,15 @@ export function CaseStudyContent({
         )}
 
         {stats && (
-          <div className="mt-12 grid grid-cols-3 gap-px overflow-hidden rounded-xl border border-border bg-border">
+          <div
+            className={`mt-12 grid gap-px overflow-hidden rounded-xl border border-border bg-border ${
+              stats.length === 1
+                ? "grid-cols-1"
+                : stats.length === 2
+                  ? "grid-cols-2"
+                  : "grid-cols-3"
+            }`}
+          >
             {stats.map((s) => (
               <div key={s.label} className="bg-background p-5">
                 <div className="mb-1 text-xl font-bold text-accent">

@@ -12,9 +12,15 @@ export default function Page() {
       title="Agentic Tools"
       intro="Building the internal AI tooling that makes other PMs, analysts, and engineers faster."
       bullets={[
-        "Developed agentic dashboards and summaries using Claude and SQL — automatically generating daily plain-language narratives that translate product health metrics into actionable insights for PMs, engineers, and leadership.",
-        "Built an AI-powered experiment review agent using Claude — flagging anomalous data and generating first-draft experiment reviews, reducing manual review time and improving experiment quality.",
-        "Shipped AI-powered internal tools that prototype product concepts, integrate APIs, and automate query categorization — work that uncovered model-tagging issues and enabled engineering teams to ship targeted model improvements.",
+        "Built an AI-powered experiment review agent using Claude — flagging anomalous data and generating first-draft experiment reviews, cutting review cycle time by 30%.",
+        "Developed agentic dashboards using Claude and SQL — automatically generating plain-language narratives of product health metrics, saving 5+ hours of manual reporting weekly.",
+        "Shipped AI-powered API workflows that automate query categorization — uncovering 3 key model-tagging errors in production and enabling engineering teams to ship targeted model improvements.",
+        "Designed and launched an AI-powered Success Metrics Builder using Claude, automating the synthesis of stakeholder success criteria into a unified composite metric.",
+      ]}
+      stats={[
+        { value: "-30%", label: "Experiment review cycle time" },
+        { value: "5+ hrs", label: "Manual reporting saved weekly" },
+        { value: "3", label: "Model-tagging errors uncovered" },
       ]}
     />
   );

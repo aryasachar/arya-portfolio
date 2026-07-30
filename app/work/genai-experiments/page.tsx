@@ -12,9 +12,10 @@ export default function Page() {
       title="GenAI Experiments"
       intro="Running structured experiments across Yahoo's generative AI surfaces to guide where to invest next."
       bullets={[
-        "Designed and executed experiments across Generative AI modules, leveraging quantitative analysis and user behavior data.",
-        "Findings were used to improve consumer engagement and prioritize future product investment.",
+        "Defined the experimentation strategy for the Generative AI module, increasing consumer engagement by 4% through hypothesis-driven experimentation and quantitative analysis.",
+        "Findings were used to modify the product roadmap and prioritize future product investment.",
       ]}
+      stats={[{ value: "+4%", label: "Consumer engagement from GenAI module experiments" }]}
     />
   );
 }

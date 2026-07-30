@@ -17,9 +17,13 @@ export default function Page() {
         caption: "Yahoo Scout's AI Summary, live in Yahoo Search today.",
       }}
       bullets={[
-        "Established north star metrics and KPI frameworks for the product, then shipped features that moved key metrics for a diverse consumer base.",
-        "Expanded into formal Product Management of Yahoo's internal Data & AI Tools from mid-2025 — defining roadmaps and gathering requirements across Product, Analytics, Engineering, and Legal.",
+        "Owned product strategy and roadmap for Yahoo Scout from concept through launch — shipping features that increased consumer engagement by 23% across a diverse user base.",
+        "Led cross-functional requirements gathering across Design, Engineering, Product, Legal, and Analytics to ship data products used across Yahoo's consumer team.",
         "The AI Summary shown above pairs a generated answer with source attribution and personalized follow-up questions, directly inside search results.",
+      ]}
+      stats={[
+        { value: "+23%", label: "Consumer engagement lift from shipped features" },
+        { value: "5", label: "Cross-functional teams aligned: Design, Eng, Product, Legal, Analytics" },
       ]}
     />
   );

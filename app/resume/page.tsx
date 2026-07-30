@@ -7,24 +7,32 @@ export const metadata: Metadata = {
 };
 
 const summary =
-  "Product Strategist with 6+ years at Yahoo defining product vision, driving B2B and B2C product strategy, and delivering end-to-end product launches through cross-functional execution. Proven track record owning AI and consumer product initiatives from concept through launch, defining roadmaps and delivering consumer experiences that drive engagement. Bringing deep analytical expertise and strong product intuition to define product vision, identify strategic opportunities, and ship impactful products. Independently built and shipped an AI-powered product that helps Product Managers design structured A/B experiment strategies.";
+  "Product Manager with 6+ years at Yahoo, owning AI and data product strategy from concept through launch. Currently driving the roadmap for Yahoo Scout (AI/LLM-powered) — shipping features that grew consumer engagement by 23% — while building AI-powered internal tools with Claude that cut experiment review cycle time by 30% and save 5+ hours of manual reporting weekly. Grounded in data science, with a track record of quantifiable product impact: from a 19% search-failure investigation that reshaped Yahoo Search's roadmap, to independently designing and shipping the PM Experiment Planner, an AI tool that helps PMs plan structured A/B experiments.";
 
 // Verbatim from resume — keep this in sync with public/resume.pdf.
 const timeline = [
   {
-    role: "Product Manager (Product Data Scientist II)",
+    role: "Product Data Scientist II / Product Manager, AI & Data",
     org: "Yahoo",
-    period: "March 2022 — Present",
+    period: "May 2024 — Present",
     bullets: [
-      "Expanded into Product Management of internal data and AI products from mid-2025 — defining product roadmaps, gathering requirements from Product, Analytics, Engineering, and Legal teams, and shipping products used across Yahoo's consumer product, analytics, and engineering teams.",
-      "Drove product strategy across the Yahoo Scout (AI/LLM-powered) product lifecycle from concept through launch — establishing north star metrics and KPI frameworks, and shipping features that moved key metrics for a diverse consumer base.",
-      "Developed agentic dashboards and summaries using Claude and SQL, automatically generating daily plain-language narratives that translated product health metrics into actionable insights for PMs, Engineers, and leadership.",
-      "Shipped AI-powered internal tools — prototyping product concepts, integrating APIs, and automating query categorization workflows that uncovered model-tagging issues, enabling engineering teams to ship targeted improvements to production models.",
-      "Built an AI-powered experiment review agent using Claude — flagging anomalous data, generating first-draft experiment reviews for the analytics team, reducing manual review time and improving experiment quality.",
-      "Identified critical drop-off points by analyzing user flow and behavioral patterns across the Yahoo ecosystem — designing targeted interventions that improved funnel conversion and informed broader product strategy across Yahoo Search.",
-      "Uncovered a 19% search failure rate through an in-depth analysis involving key metrics, queries and user sessions across Web and Mobile — segmenting failures into actionable categories, while providing solutions and guiding the formation of product squads, earning a Yahoo Spot Bonus (Nov. 2023) for outstanding product impact.",
-      "Designed and executed experiments across Generative AI modules leveraging quantitative analysis and user behavior data to improve consumer engagement and prioritize future product investments.",
-      "Led the redesign of Yahoo Search for US and International markets across Web and Mobile from inception to launch, running rapid experimentation in an agile framework resulting in a successful launch.",
+      "Led cross-functional requirements gathering across Design, Engineering, Product, Legal, and Analytics to ship data products used across Yahoo's consumer team.",
+      "Owned product strategy and roadmap for Yahoo Scout (AI/LLM-powered) from concept through launch — shipping features that increased consumer engagement by 23% across a diverse user base.",
+      "Built and shipped AI-powered internal tools using Claude: an experiment review agent that cut review cycle time by 30%, agentic dashboards saving 5+ hours of manual reporting weekly, and API workflows that uncovered 3 key model-tagging errors in production.",
+      "Defined the experimentation strategy for the Generative AI module, increasing consumer engagement by 4% through hypothesis-driven experimentation and quantitative analysis to modify the product roadmap.",
+      "Identified and prioritized fixes for critical drop-off points across the Yahoo ecosystem, designing targeted interventions that improved Search funnel conversion by 2%.",
+      "Designed and launched an AI-powered Success Metrics Builder using Claude, automating the synthesis of stakeholder success criteria into a unified composite metric.",
+    ],
+  },
+  {
+    role: "Product Data Scientist I",
+    org: "Yahoo",
+    period: "March 2022 — May 2024",
+    bullets: [
+      "Directed product action to improve click engagement by 2.5% by diagnosing underperforming query categories in the \"people\" module.",
+      "Uncovered a 19% search failure rate through deep analysis of queries and user sessions — segmenting failures into actionable categories and guiding dedicated product squads to resolution. Recognized with Yahoo's Above and Beyond Product Impact award (Nov. 2023) for presenting findings to VP-level leadership and developing an analysis framework adopted across multiple Yahoo Search projects.",
+      "Spearheaded the Yahoo Search redesign across US and International markets — driving a 4% increase in search box engagement through analytics and experimentation strategy across Web and Mobile platforms, from inception through launch.",
+      "Achieved a 3% gain in click-through rate by investigating the drop in clicks for the local module, identifying causality and delivering targeted recommendations directly to the product team.",
     ],
   },
   {
@@ -32,7 +40,8 @@ const timeline = [
     org: "Yahoo",
     period: "August 2019 — March 2022",
     bullets: [
-      "Extracted insights from large-scale data to improve product personalization for Yahoo Mail — partnering with Engineering to automate workflows and ship data-driven features.",
+      "Improved product personalization for 200M+ Yahoo Mail users — partnering with Engineering to automate workflows and ship data-driven features.",
+      "Optimized and debugged code for reduced latency and applied pattern recognition to resolve complex problems.",
     ],
   },
 ];
@@ -41,25 +50,24 @@ const competencies = [
   {
     heading: "Product Management",
     items: [
-      "Product Vision",
-      "AI Product Strategy",
+      "Product Vision & Strategy",
+      "AI/ML Product Management",
       "Experimentation design — A/B & MAB (Multi-Armed Bandits) tests",
       "Product Requirements (PRDs) and Roadmap Development",
       "Go-To-Market strategy",
       "UX & User Research",
-      "Cross-functional Leadership",
     ],
   },
   {
     heading: "Data Science & AI",
     items: [
       "KPI and North Star Metric Development",
-      "SQL",
-      "Machine Learning",
+      "Product Analytics",
       "Hands-on AI tooling and Building Agents — Claude (Code, Design, Cowork)",
       "User Journey and Funnel Analysis",
       "Tableau",
-      "Google Data Studio",
+      "SQL",
+      "Machine Learning",
     ],
   },
 ];

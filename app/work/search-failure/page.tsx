@@ -14,7 +14,7 @@ export default function Page() {
       bullets={[
         "Uncovered a 19% search failure rate through in-depth analysis of key metrics, queries, and user sessions across Web and Mobile.",
         "Segmented failures into actionable categories and proposed solutions, guiding the formation of dedicated product squads to address them.",
-        "The work was recognized with a Yahoo Spot Bonus (Nov. 2023) for outstanding product impact.",
+        "Recognized with Yahoo's Above and Beyond Product Impact award (Nov. 2023) for presenting findings to VP-level leadership and developing an analysis framework adopted across multiple Yahoo Search projects.",
       ]}
       demo={{
         url: "https://flow-shaper-06.lovable.app",
