@@ -8,15 +8,15 @@ export const metadata: Metadata = {
 const sections = [
   {
     heading: "Where I started",
-    body: "I started at Yahoo in 2019 as a Content Analyst and Knowledge Engineer, extracting insights from large-scale data to improve product personalization for Yahoo Mail — partnering closely with Engineering to turn analysis into shipped, data-driven features.",
+    body: "I started at Yahoo in 2019 as a Content Analyst and Knowledge Engineer, improving product personalization for 200M+ Yahoo Mail users — partnering closely with Engineering to turn analysis into shipped, data-driven features, and optimizing code along the way to resolve complex problems.",
   },
   {
     heading: "Where I evolved",
-    body: "In 2022 I moved into a Product Manager / Product Data Scientist role, driving strategy across the Yahoo Scout AI/LLM product lifecycle and leading the redesign of Yahoo Search for US and international markets. Along the way I dug into user flow and session data across Web and Mobile and uncovered a 19% search failure rate — work that earned a Yahoo Spot Bonus and reshaped how the team thought about search quality.",
+    body: "In 2022 I moved into a Product Data Scientist role, digging into user flow and session data across Web and Mobile to uncover a 19% search failure rate — work recognized with Yahoo's Above and Beyond Product Impact award for reshaping how the team thought about search quality. I carried that same rigor into spearheading the Yahoo Search redesign across US and International markets, driving a 4% increase in search box engagement from inception through launch.",
   },
   {
     heading: "Where I'm going",
-    body: "Since mid-2025 I've formally expanded into Product Management for Yahoo's internal Data & AI Tools — building agentic dashboards and an AI-powered experiment review agent with Claude, and independently designing and shipping an AI tool that helps PMs plan structured A/B experiments. I'm now looking for the next room to bring that same instinct: start with the data, ship something people actually use.",
+    body: "Since May 2024 I've stepped into Product Management for Yahoo's AI & Data products — owning the Yahoo Scout (AI/LLM-powered) roadmap from concept through launch and growing consumer engagement by 23%, while building AI-powered internal tools with Claude: an experiment review agent, agentic dashboards, and a Success Metrics Builder that together save my team hours every week. I've also independently designed and shipped the PM Experiment Planner, an AI tool that helps PMs plan structured A/B experiments. I'm now looking for the next room to bring that same instinct: start with the data, ship something people actually use.",
   },
 ];
 
