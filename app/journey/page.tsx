@@ -24,7 +24,7 @@ export default function JourneyPage() {
   return (
     <Container>
       <section className="py-16 sm:py-20">
-        <h1 className="mb-12 text-3xl font-bold tracking-tight text-text-primary">
+        <h1 className="mb-12 text-3xl font-bold tracking-tight text-text-primary sm:text-4xl">
           Journey
         </h1>
         <div className="flex flex-col gap-10">

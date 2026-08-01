@@ -11,7 +11,7 @@ export default function WorkPage() {
   return (
     <Container>
       <section className="py-16 sm:py-20">
-        <h1 className="mb-3 text-3xl font-bold tracking-tight text-text-primary">
+        <h1 className="mb-3 text-3xl font-bold tracking-tight text-text-primary sm:text-4xl">
           Work
         </h1>
         <p className="mb-10 max-w-md text-text-muted">

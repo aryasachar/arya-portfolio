@@ -103,7 +103,7 @@ export default function ResumePage() {
     <Container>
       <section className="py-16 sm:py-20">
         <div className="mb-8 flex flex-wrap items-center justify-between gap-4">
-          <h1 className="text-3xl font-bold tracking-tight text-text-primary">
+          <h1 className="text-3xl font-bold tracking-tight text-text-primary sm:text-4xl">
             Resume
           </h1>
           <a
