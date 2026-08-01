@@ -2,14 +2,14 @@ import type { Metadata } from "next";
 import { CaseStudyContent } from "@/components/case-study-content";
 
 export const metadata: Metadata = {
-  title: "Yahoo Scout — Arya Sachar",
+  title: "Growing Yahoo Scout's Engagement by 23% — Arya Sachar",
 };
 
 export default function Page() {
   return (
     <CaseStudyContent
       eyebrow="AI / LLM Product"
-      title="Yahoo Scout"
+      title="Growing Yahoo Scout's Engagement by 23%"
       intro="Yahoo Scout is Yahoo's AI/LLM-powered product. I drove product strategy across its lifecycle from concept through launch."
       heroImage={{
         src: "/case-studies/yahoo-scout-ai-summary.png",

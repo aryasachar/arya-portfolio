@@ -2,14 +2,14 @@ import type { Metadata } from "next";
 import { CaseStudyContent } from "@/components/case-study-content";
 
 export const metadata: Metadata = {
-  title: "Search Redesign — Arya Sachar",
+  title: "An Analytics-Driven Redesign of Yahoo Search, Start to Launch — Arya Sachar",
 };
 
 export default function Page() {
   return (
     <CaseStudyContent
       eyebrow="Product Strategy"
-      title="Search Redesign"
+      title="An Analytics-Driven Redesign of Yahoo Search, Start to Launch"
       intro="Following the failure-rate findings, I led the redesign of Yahoo Search end-to-end — from inception through launch."
       bullets={[
         "Spearheaded the Yahoo Search redesign across US and international markets — driving a 4% increase in search box engagement through analytics and experimentation strategy across Web and Mobile, from inception through launch.",

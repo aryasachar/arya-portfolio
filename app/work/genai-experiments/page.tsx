@@ -2,14 +2,14 @@ import type { Metadata } from "next";
 import { CaseStudyContent } from "@/components/case-study-content";
 
 export const metadata: Metadata = {
-  title: "GenAI Experiments — Arya Sachar",
+  title: "A 4% Engagement Lift From Generative AI Experiments — Arya Sachar",
 };
 
 export default function Page() {
   return (
     <CaseStudyContent
       eyebrow="GenAI / Experimentation"
-      title="GenAI Experiments"
+      title="A 4% Engagement Lift From Generative AI Experiments"
       intro="Running structured experiments across Yahoo's generative AI surfaces to guide where to invest next."
       bullets={[
         "Defined the experimentation strategy for the Generative AI module, increasing consumer engagement by 4% through hypothesis-driven experimentation and quantitative analysis.",

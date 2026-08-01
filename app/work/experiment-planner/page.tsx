@@ -2,14 +2,14 @@ import type { Metadata } from "next";
 import { CaseStudyContent } from "@/components/case-study-content";
 
 export const metadata: Metadata = {
-  title: "PM Experiment Planner — Arya Sachar",
+  title: "Shipping an AI Experiment Planner, Solo — Arya Sachar",
 };
 
 export default function Page() {
   return (
     <CaseStudyContent
       eyebrow="0 → 1 Build"
-      title="PM Experiment Planner"
+      title="Shipping an AI Experiment Planner, Solo"
       intro="A tool I designed and shipped independently, end to end — no team, no handoffs."
       bullets={[
         "Independently built and shipped an AI-powered tool for Product Managers — generating structured A/B experiment plans including metrics, guardrails, and success criteria.",

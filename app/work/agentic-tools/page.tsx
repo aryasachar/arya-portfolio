@@ -2,14 +2,14 @@ import type { Metadata } from "next";
 import { CaseStudyContent } from "@/components/case-study-content";
 
 export const metadata: Metadata = {
-  title: "Agentic Tools — Arya Sachar",
+  title: "Building AI Agents That Save Hours Across the Product Lifecycle — Arya Sachar",
 };
 
 export default function Page() {
   return (
     <CaseStudyContent
       eyebrow="Internal AI Tools"
-      title="Agentic Tools"
+      title="Building AI Agents That Save Hours Across the Product Lifecycle"
       intro="Building the internal AI tooling that makes other PMs, analysts, and engineers faster."
       bullets={[
         "Built an AI-powered experiment review agent using Claude — flagging anomalous data and generating first-draft experiment reviews, cutting review cycle time by 30%.",
