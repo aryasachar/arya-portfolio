@@ -6,7 +6,7 @@ import { AskArya } from "@/components/ask-arya";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Arya Sachar — Product Manager, Data & AI Tools",
+  title: "Arya Sachar — Product Manager, AI & Data",
   description:
     "Arya Sachar is a Product Manager at Yahoo building data and AI tools, from Yahoo Scout to agentic experiment workflows.",
 };

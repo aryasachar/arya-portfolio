@@ -9,16 +9,17 @@ export default function Home() {
       {/* Hero */}
       <section className="py-20 sm:py-28">
         <p className="mb-4 text-sm font-medium text-accent">
-          Product Manager, AI &amp; Data Products · Yahoo
+          Product Manager, AI &amp; Data · Yahoo
         </p>
         <h1 className="mb-5 max-w-xl text-4xl font-bold leading-[1.1] tracking-tight text-text-primary sm:text-5xl">
           Product strategist and builder.
         </h1>
         <p className="mb-8 max-w-md text-base leading-relaxed text-text-muted">
-          6+ years at Yahoo defining product vision and driving B2B and B2C
-          strategy — from AI initiatives through launch. Grounded in data
-          science, I recently designed and shipped an AI tool that helps PMs
-          plan structured experiments end to end.
+          6+ years at Yahoo owning AI and data product strategy from concept
+          through launch — most recently shipping features for Yahoo Scout
+          that grew consumer engagement by 23%. Grounded in data science, I
+          recently designed and shipped an AI tool that helps PMs plan
+          structured experiments end to end.
         </p>
         <div className="flex flex-wrap items-center gap-4">
           <Link

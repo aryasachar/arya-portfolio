@@ -12,7 +12,7 @@ export default function Page() {
       title="PM Experiment Planner"
       intro="A tool I designed and shipped independently, end to end — no team, no handoffs."
       bullets={[
-        "Independently built and shipped an AI-powered product that helps Product Managers design structured A/B experiment strategies.",
+        "Independently built and shipped an AI-powered tool for Product Managers — generating structured A/B experiment plans including metrics, guardrails, and success criteria.",
       ]}
       demo={{
         url: "https://pm-experiment-planner.lovable.app",
