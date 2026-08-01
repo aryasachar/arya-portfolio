@@ -11,6 +11,19 @@ const PRESET_QUESTIONS = [
   "Why is Arya looking for a new role?",
 ];
 
+const PRESET_ANSWERS: Record<string, string> = {
+  "What's Arya's AI product experience?":
+    "Arya owns product strategy and roadmap for Yahoo Scout, Yahoo's AI/LLM-powered product, from concept through launch — shipping features that grew consumer engagement by 23%. She's also built AI-powered internal tools using Claude, including an experiment review agent and a Success Metrics Builder.",
+  "Tell me about the 19% search failure discovery.":
+    "Arya uncovered a 19% search failure rate through deep analysis of Yahoo Search queries and user sessions, segmenting failures into actionable categories and guiding dedicated product squads to resolution. That same search-quality initiative — presenting findings to VP-level leadership and developing an analysis framework adopted across multiple Yahoo Search projects — earned her Yahoo's Above and Beyond Product Impact award in November 2023.",
+  "What has Arya built hands-on?":
+    "Arya independently designed and shipped the PM Experiment Planner, an AI tool that generates structured A/B experiment plans with metrics, guardrails, and success criteria. She's also built an AI-powered experiment review agent and a Success Metrics Builder, both using Claude.",
+  "What's Arya's data science background?":
+    "Arya started at Yahoo in 2019 as a Content Analyst and Knowledge Engineer, then moved into a Product Data Scientist role in 2022. She holds a Master's in Data Science from Indiana University, and brings that analytical foundation into her product work — from uncovering the 19% search failure rate to building North Star metric frameworks.",
+  "Why is Arya looking for a new role?":
+    "Arya has spent 6+ years growing from data science into product management at Yahoo, and is now looking to bring that same instinct — start with the data, ship something people actually use — to a new team and a new set of problems.",
+};
+
 type Exchange = { question: string; answer: string };
 
 export function AskArya() {
@@ -20,6 +33,10 @@ export function AskArya() {
   const [error, setError] = useState(false);
 
   async function ask(question: string) {
+    if (PRESET_ANSWERS[question]) {
+      setExchanges((prev) => [...prev, { question, answer: PRESET_ANSWERS[question] }]);
+      return;
+    }
     setLoading(true);
     setError(false);
     try {
