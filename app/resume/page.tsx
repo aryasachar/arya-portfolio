@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Download } from "lucide-react";
+import { Download, ArrowUpRight } from "lucide-react";
 import { Container } from "@/components/container";
 
 export const metadata: Metadata = {
@@ -43,6 +43,19 @@ const timeline = [
       "Improved product personalization for 200M+ Yahoo Mail users — partnering with Engineering to automate workflows and ship data-driven features.",
       "Optimized and debugged code for reduced latency and applied pattern recognition to resolve complex problems.",
     ],
+  },
+];
+
+const recognition = [
+  {
+    title: "PM Experiment Planner",
+    link: "https://pm-experiment-planner.lovable.app",
+    body: "Independently built and shipped an AI-powered tool for Product Managers — generating structured A/B experiment plans including metrics, guardrails, and success criteria.",
+  },
+  {
+    title: "Above and Beyond Product Impact — Yahoo",
+    period: "November 2023",
+    body: "Recognized for leading a cross-functional search quality initiative — presenting findings to VP-level leadership, forming dedicated product squads, and developing an analysis framework adopted across multiple Yahoo Search projects.",
   },
 ];
 
@@ -95,7 +108,7 @@ export default function ResumePage() {
           </h1>
           <a
             href="/resume.pdf"
-            download
+            download="Arya_Resume.pdf"
             className="inline-flex items-center gap-2 rounded-full border border-border px-4 py-2 text-sm font-medium text-text-primary transition-colors hover:border-accent hover:text-accent"
           >
             <Download size={15} strokeWidth={1.75} />
@@ -126,6 +139,43 @@ export default function ResumePage() {
               </ul>
             </div>
           ))}
+        </div>
+
+        <div className="mt-2 border-b border-border pb-10">
+          <h2 className="mb-4 text-sm font-semibold uppercase tracking-wide text-accent">
+            Projects and Recognition
+          </h2>
+          <div className="flex flex-col gap-5">
+            {recognition.map((r) => (
+              <div key={r.title}>
+                <div className="mb-1 flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+                  <p className="text-sm font-semibold text-text-primary">
+                    {r.link ? (
+                      <a
+                        href={r.link}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="inline-flex items-center gap-1 underline decoration-border underline-offset-4 transition-colors hover:text-accent hover:decoration-accent"
+                      >
+                        {r.title}
+                        <ArrowUpRight size={13} strokeWidth={1.75} />
+                      </a>
+                    ) : (
+                      r.title
+                    )}
+                  </p>
+                  {r.period && (
+                    <span className="text-sm text-text-muted">
+                      {r.period}
+                    </span>
+                  )}
+                </div>
+                <p className="text-sm leading-relaxed text-text-muted">
+                  {r.body}
+                </p>
+              </div>
+            ))}
+          </div>
         </div>
 
         <div className="mt-2 grid gap-10 border-b border-border pb-10 sm:grid-cols-2">

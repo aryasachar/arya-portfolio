@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Container } from "@/components/container";
 
 export const metadata: Metadata = {
-  title: "About — Arya Sachar",
+  title: "Journey — Arya Sachar",
 };
 
 const sections = [
@@ -20,12 +20,12 @@ const sections = [
   },
 ];
 
-export default function AboutPage() {
+export default function JourneyPage() {
   return (
     <Container>
       <section className="py-16 sm:py-20">
         <h1 className="mb-12 text-3xl font-bold tracking-tight text-text-primary">
-          About
+          Journey
         </h1>
         <div className="flex flex-col gap-10">
           {sections.map((s) => (

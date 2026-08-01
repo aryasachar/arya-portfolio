@@ -2,14 +2,14 @@ import type { Metadata } from "next";
 import { CaseStudyContent } from "@/components/case-study-content";
 
 export const metadata: Metadata = {
-  title: "The 19% Problem — Arya Sachar",
+  title: "Finding the 19% failure in Search — Arya Sachar",
 };
 
 export default function Page() {
   return (
     <CaseStudyContent
       eyebrow="Research & Analysis"
-      title="The 19% Problem"
+      title="Finding the 19% failure in Search"
       intro="A deep dive into Yahoo Search quality that started with a simple question: how often does search actually fail?"
       bullets={[
         "Uncovered a 19% search failure rate through in-depth analysis of key metrics, queries, and user sessions across Web and Mobile.",

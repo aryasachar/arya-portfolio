@@ -17,7 +17,7 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: "search-failure",
-    title: "The 19% Problem",
+    title: "Finding the 19% failure in Search",
     category: "Research & Analysis",
     summary:
       "Analyzing queries and sessions across Web and Mobile to uncover a 19% search failure rate — recognized with Yahoo's Above and Beyond Product Impact award.",

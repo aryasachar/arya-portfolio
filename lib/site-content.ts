@@ -39,7 +39,7 @@ Bachelor of Science, Management Information Systems — San Jose State Universit
 
 CASE STUDIES ON THE SITE
 - Yahoo Scout: owned product strategy and roadmap from concept through launch, growing consumer engagement 23%.
-- The 19% Problem: uncovered a 19% search failure rate via deep session/query analysis; also improved people-module click engagement 2.5% and local-module CTR 3%.
+- Finding the 19% failure in Search: uncovered a 19% search failure rate via deep session/query analysis; also improved people-module click engagement 2.5% and local-module CTR 3%.
 - Search Redesign: spearheaded the Yahoo Search redesign across US and International markets, driving a 4% increase in search box engagement.
 - Agentic Tools: built an AI experiment review agent (-30% review time), agentic dashboards (5+ hrs saved weekly), and a Success Metrics Builder, all using Claude.
 - PM Experiment Planner: independently designed and shipped an AI tool that generates structured A/B experiment plans with metrics, guardrails, and success criteria. Built solo in about a week. Deliberately does not recommend ship/kill decisions.
