@@ -120,6 +120,9 @@ export default function ResumePage() {
           {summary}
         </p>
 
+        <h2 className="mb-3 text-sm font-semibold uppercase tracking-wide text-accent">
+          Experience
+        </h2>
         <div className="flex flex-col gap-10">
           {timeline.map((role) => (
             <div key={role.role} className="border-b border-border pb-10">
