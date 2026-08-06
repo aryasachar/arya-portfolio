@@ -16,7 +16,7 @@ const sections = [
   },
   {
     heading: "Where I'm going",
-    body: "Since May 2024 I have functionally stepped into Product Management for Yahoo's AI & Data products — owning the Yahoo Scout (AI/LLM-powered) roadmap from concept through launch and growing consumer engagement by 23%, while building AI-powered internal tools with Claude: an experiment review agent, agentic dashboards, and a Success Metrics Builder that together save my team hours every week. I've also independently designed and shipped the PM Experiment Planner, an AI tool that helps PMs plan structured A/B experiments. I'm now looking for the next room to bring that same instinct: start with the data, ship something people actually use.",
+    body: "Since June 2024 I have functionally stepped into Product Management for Yahoo's AI & Data products — owning the Yahoo Scout (AI/LLM-powered) roadmap from concept through launch and growing consumer engagement by 23%, while building AI-powered internal tools with Claude: an experiment review agent, agentic dashboards, and a Success Metrics Builder that together save my team hours every week. I've also independently designed and shipped the PM Experiment Planner, an AI tool that helps PMs plan structured A/B experiments. I'm now looking for the next room to bring that same instinct: start with the data, ship something people actually use.",
   },
 ];
 

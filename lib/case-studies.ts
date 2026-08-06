@@ -45,9 +45,9 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: "genai-experiments",
-    title: "A 4% Engagement Lift From Generative AI Experiments",
+    title: "A 3% Lift in Query Engagement From Generative AI Experiments",
     category: "GenAI / Experimentation",
     summary:
-      "Designing and running experiments across generative AI modules, increasing consumer engagement by 4%.",
+      "Designing and running experiments across generative AI modules, increasing follow-on query engagement by 3%.",
   },
 ];

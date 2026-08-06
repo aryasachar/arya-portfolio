@@ -7,19 +7,17 @@ ARYA SACHAR — Product Manager, AI & Data, Yahoo
 
 EXPERIENCE
 
-Product Data Scientist II / Product Manager, AI & Data, Yahoo — May 2024 to Present
-- Led cross-functional requirements gathering across Design, Engineering, Product, Legal, and Analytics to ship data products used across Yahoo's consumer team.
+Product Data Scientist II / Product Manager, AI & Data, Yahoo — June 2024 to Present
 - Owned product strategy and roadmap for Yahoo Scout (AI/LLM-powered) from concept through launch, shipping features that increased consumer engagement by 23% across a diverse user base.
 - Built and shipped AI-powered internal tools using Claude: an experiment review agent that cut review cycle time by 30%, agentic dashboards saving 5+ hours of manual reporting weekly, and API workflows that uncovered 3 key model-tagging errors in production.
-- Defined the experimentation strategy for the Generative AI module, increasing consumer engagement by 4% through hypothesis-driven experimentation.
-- Identified and prioritized fixes for critical drop-off points across the Yahoo ecosystem, improving Search funnel conversion by 2%.
-- Designed and launched an AI-powered Success Metrics Builder using Claude, automating the synthesis of stakeholder success criteria into a unified composite metric.
+- Executed a comprehensive experimentation strategy for the Generative AI module, increasing follow-on query engagement by 3% and translating results into product roadmap decisions.
+- Prioritized fixes for critical drop-off points across the Yahoo ecosystem, improving Search funnel conversion by 2%.
+- Delivered an AI-powered Success Metrics Builder using Claude, automating the synthesis of stakeholder success criteria into a unified composite metric.
 
-Product Data Scientist I, Yahoo — March 2022 to May 2024
+Product Data Scientist I, Yahoo — March 2022 to June 2024
 - Improved click engagement by 2.5% by diagnosing underperforming query categories in the "people" module.
-- Uncovered a 19% search failure rate through deep analysis of queries and user sessions, segmenting failures into actionable categories and guiding dedicated product squads to resolution. Recognized with Yahoo's Above and Beyond Product Impact award (Nov. 2023) for presenting findings to VP-level leadership.
+- Surfaced a 19% search failure rate through deep analysis of queries and user sessions, segmenting failures into actionable categories that drove the formation of dedicated product squads, while providing targeted solutions for the identified failures. (Related but separate: this work led to the Above and Beyond Product Impact award — see Projects and Recognition below.)
 - Spearheaded the Yahoo Search redesign across US and International markets, driving a 4% increase in search box engagement, from inception through launch.
-- Achieved a 3% gain in click-through rate by investigating the drop in clicks for the local module.
 
 Content Analyst and Knowledge Engineer, Yahoo — August 2019 to March 2022
 - Improved product personalization for 200M+ Yahoo Mail users, partnering with Engineering to automate workflows.
@@ -39,11 +37,11 @@ Bachelor of Science, Management Information Systems — San Jose State Universit
 
 CASE STUDIES ON THE SITE
 - Growing Yahoo Scout's Engagement by 23%: owned product strategy and roadmap from concept through launch, growing consumer engagement 23%.
-- Finding the 19% Failure in Search: uncovered a 19% search failure rate via deep session/query analysis; also improved people-module click engagement 2.5% and local-module CTR 3%.
+- Finding the 19% Failure in Search: uncovered a 19% search failure rate via deep session/query analysis; also improved people-module click engagement 2.5%.
 - An Analytics-Driven Redesign of Yahoo Search, Start to Launch: spearheaded the Yahoo Search redesign across US and International markets, driving a 4% increase in search box engagement.
 - Building AI Agents That Save Hours Across the Product Lifecycle: built an AI experiment review agent (-30% review time), agentic dashboards (5+ hrs saved weekly), and a Success Metrics Builder, all using Claude.
 - Shipping an AI Experiment Planner, Solo: independently designed and shipped an AI tool that generates structured A/B experiment plans with metrics, guardrails, and success criteria. Built solo in about a week. Deliberately does not recommend ship/kill decisions.
-- A 4% Engagement Lift From Generative AI Experiments: defined experimentation strategy for the Generative AI module, increasing consumer engagement 4%.
+- A 3% Lift in Query Engagement From Generative AI Experiments: executed a comprehensive experimentation strategy for the Generative AI module, increasing follow-on query engagement 3%.
 `.trim();
 
 export const SYSTEM_PROMPT = `You are "Ask Arya," an assistant embedded on Arya Sachar's product management portfolio site. You answer questions from visitors — mostly recruiters and hiring managers — about Arya's experience, using ONLY the information below.

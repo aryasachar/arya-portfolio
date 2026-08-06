@@ -7,32 +7,30 @@ export const metadata: Metadata = {
 };
 
 const summary =
-  "Product Manager with 6+ years at Yahoo, owning AI and data product strategy from concept through launch. Currently driving the roadmap for Yahoo Scout (AI/LLM-powered) — shipping features that grew consumer engagement by 23% — while building AI-powered internal tools with Claude that cut experiment review cycle time by 30% and save 5+ hours of manual reporting weekly. Grounded in data science, with a track record of quantifiable product impact: from a 19% search-failure investigation that reshaped Yahoo Search's roadmap, to independently designing and shipping the PM Experiment Planner, an AI tool that helps PMs plan structured A/B experiments.";
+  "Data Scientist turned Product Manager, 6+ years at Yahoo shipping products, owning product strategy and translating data into key product decisions. Experienced leading cross-functional initiatives across Design, Engineering, Product, Legal, and Analytics to ship products at scale.";
 
 // Verbatim from resume — keep this in sync with public/resume.pdf.
 const timeline = [
   {
     role: "Product Data Scientist II / Product Manager, AI & Data",
     org: "Yahoo",
-    period: "May 2024 — Present",
+    period: "June 2024 — Present",
     bullets: [
-      "Led cross-functional requirements gathering across Design, Engineering, Product, Legal, and Analytics to ship data products used across Yahoo's consumer team.",
       "Owned product strategy and roadmap for Yahoo Scout (AI/LLM-powered) from concept through launch — shipping features that increased consumer engagement by 23% across a diverse user base.",
       "Built and shipped AI-powered internal tools using Claude: an experiment review agent that cut review cycle time by 30%, agentic dashboards saving 5+ hours of manual reporting weekly, and API workflows that uncovered 3 key model-tagging errors in production.",
-      "Defined the experimentation strategy for the Generative AI module, increasing consumer engagement by 4% through hypothesis-driven experimentation and quantitative analysis to modify the product roadmap.",
-      "Identified and prioritized fixes for critical drop-off points across the Yahoo ecosystem, designing targeted interventions that improved Search funnel conversion by 2%.",
-      "Designed and launched an AI-powered Success Metrics Builder using Claude, automating the synthesis of stakeholder success criteria into a unified composite metric.",
+      "Executed a comprehensive experimentation strategy for the Generative AI module, increasing follow-on query engagement by 3% and translating results into product roadmap decisions.",
+      "Prioritized fixes for critical drop-off points across the Yahoo ecosystem, designing targeted interventions that improved Search funnel conversion by 2%.",
+      "Delivered an AI-powered Success Metrics Builder using Claude, automating the synthesis of stakeholder success criteria into a unified composite metric.",
     ],
   },
   {
     role: "Product Data Scientist I",
     org: "Yahoo",
-    period: "March 2022 — May 2024",
+    period: "March 2022 — June 2024",
     bullets: [
       "Directed product action to improve click engagement by 2.5% by diagnosing underperforming query categories in the \"people\" module.",
-      "Uncovered a 19% search failure rate through deep analysis of queries and user sessions — segmenting failures into actionable categories and guiding dedicated product squads to resolution. Recognized with Yahoo's Above and Beyond Product Impact award (Nov. 2023) for presenting findings to VP-level leadership and developing an analysis framework adopted across multiple Yahoo Search projects.",
-      "Spearheaded the Yahoo Search redesign across US and International markets — driving a 4% increase in search box engagement through analytics and experimentation strategy across Web and Mobile platforms, from inception through launch.",
-      "Achieved a 3% gain in click-through rate by investigating the drop in clicks for the local module, identifying causality and delivering targeted recommendations directly to the product team.",
+      "Surfaced a 19% search failure rate through deep analysis of queries and user sessions — segmenting failures into actionable categories that drove the formation of dedicated product squads, while providing targeted solutions for the identified failures.",
+      "Spearheaded the Yahoo Search redesign across US and International markets — driving a 4% increase in search box engagement through analytics and experimentation strategy across the Web and Mobile platforms from inception through launch.",
     ],
   },
   {
